@@ -1,2 +1,79 @@
-<h1>StaticPages#top</h1>
-<p>this is top page.</p>
+<div class="date">DAY <span class="date-number"><%=@date %></span></div>
+<div id="container"></div>
+<div class="information">
+  nanikore 
+  twitter 
+  instagram
+</div>
+
+
+<script>
+  var width =  window.innerWidth*0.9;
+  var height =  window.innerHeight*0.7;
+  
+  // Engine生成
+  var engine = Matter.Engine.create(document.getElementById("container"), {
+      render: {
+          options: {
+              wireframes: false, // trueでワイヤー表示
+              width: width, // canvasの横幅
+              height: height, // canvasの高さ
+              background: "rgba(255, 255, 255, 0)"
+          }
+      }
+  });
+  
+  // 床生成
+  floor = Matter.Bodies.rectangle(320, 480, 640, 1, {
+      isStatic: true // 固定
+  });
+  
+  // 床追加
+  Matter.World.add(engine.world, Matter.Bodies.rectangle(width / 2, height, width, 1, {
+    render: {
+         fillStyle: 'rgba(0,0,0,0)'
+    },
+      isStatic: true // 固定
+  }));
+  Matter.World.add(engine.world, Matter.Bodies.rectangle(width, height / 2, 1, height, {
+    render: {
+         fillStyle: 'rgba(0,0,0,0)'
+    },
+      isStatic: true // 固定
+  }));
+  Matter.World.add(engine.world, Matter.Bodies.rectangle(0, height / 2, 1, height, {
+    render: {
+         fillStyle: 'rgba(0,0,0,0)'
+    },
+      isStatic: true // 固定
+  }));
+  <% if @images.present? %>
+    <% @images.each do |image| %>
+    
+        // 塵の生成
+        var x = width / 2 + Math.random() * 10;
+        var y = Math.random() * 480 - 480;
+        var scale = Math.random() + 1
+    
+          chiri = Matter.Bodies.trapezoid(x, y, 70*scale, 70*scale, 0.2, {
+              density: 0.01, // 質量
+              frictionAir: 0.01, // 空気抵抗
+              restitution: 0.1, // 弾力性
+              friction: 1, // 摩擦
+              render: {
+                sprite: {
+                  texture: '<%= Refile.attachment_url(image, :image) %>',
+                  xScale: 0.13*scale,
+                  yScale: 0.13*scale,
+                }
+              }
+          });
+          // 塵の追加
+          Matter.World.add(engine.world, [chiri]);
+          
+    <% end %>
+  <% end %>
+  
+  // 物理演算実行
+  Matter.Engine.run(engine);
+</script>

@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+@font-face{
+  font-family: "futura-medium-oblique";
+  src: url('futura_medium_oblique.ttf') format('truetype');
+ }

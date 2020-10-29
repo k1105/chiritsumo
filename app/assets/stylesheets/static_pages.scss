@@ -1,3 +1,20 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: #BC004D;
+}
+
+.date {
+  font-family: "futura-medium-oblique";
+  font-size: 70px;
+}
+
+.date-number {
+  letter-spacing: -0.1em;
+}
+
+.information {
+  font-family: "futura-medium-oblique";
+}
