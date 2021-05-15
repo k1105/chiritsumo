@@ -16,5 +16,38 @@
 
 @font-face{
   font-family: "futura-medium-oblique";
+  /*開発環境では以下*/
+  /* src: url('ファイル名') format("truetype");*/
+  /*本番環境ではasset-urlを使用*/
   src: url('futura_medium_oblique.ttf') format('truetype');
- }
+}
+
+.futura {
+  font-family: 'futura-medium-oblique';
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-family: 'futura-medium-oblique';
+}
+
+
+a:hover {
+    background: #00ff8b;
+    color: black;
+  }
+  
+ul {
+  list-style: none;
+}
+
+li {
+  float: left;
+  margin-right: 30px;
+}
+
+.text-inversion-style {
+  background: #00ff8b;
+  color: black;
+}

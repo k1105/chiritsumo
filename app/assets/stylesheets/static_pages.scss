@@ -4,6 +4,8 @@
 
 body {
   background-color: #BC004D;
+  color: white;
+  font-family: 'Yu Gothic';
 }
 
 .date {
@@ -16,5 +18,12 @@ body {
 }
 
 .information {
+  position: absolute;
+  left: -30px;
+  top: 90vh;
   font-family: "futura-medium-oblique";
+}
+
+.change-log {
+  font-size: 12px;
 }
