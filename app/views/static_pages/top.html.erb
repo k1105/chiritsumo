@@ -1,98 +1,53 @@
-<div class="date">DAY <span class="date-number"><%=@date %></span></div>
-<div id="container"></div>
-
+<div class='date'>DAY <span class='date-number'><%=@date %></span></div>
+<div id='container'></div>
 
 <script>
   window.onload = function() {
-    var width =  window.innerWidth*0.9;
-    var height =  window.innerHeight*0.7;
-    
-    // Engine生成
-      // module aliases
-      var Engine = Matter.Engine,
-          Render = Matter.Render,
-          World = Matter.World,
-          Bodies = Matter.Bodies;
-    
-      // create an engine
-      var engine = Engine.create();
-    
-      // create a renderer
-      var render = Render.create({
-          element: document.getElementById("container"),
-          options: {
-            width: width,
-            height: height,
-            background: "rgba(255, 255, 255, 0)",
-            pixelRatio: 2, //Pixel比; スマホ用に2にする
-            wireframes: false
-          },
-          engine: engine
-      });
+    const width =  window.innerWidth*0.9;
+    const height =  window.innerHeight*0.7;
+    let textures = []    
+    let { Engine , Render, Composite, Bodies } = Matter;
+    let bodies = [];
+    let boxRender = { fillStyle: 'rgba(0, 0, 0, 0)', strokeStyle: 'rgba(0, 0, 0, 0)', lineWidth: 0 }
 
+    // create an engine
+    let engine = Engine.create();
     
-    // var engine = Matter.Engine.create(document.getElementById("container"), {
-    //     render: {
-    //         options: {
-    //             wireframes: false, // trueでワイヤー表示
-    //             width: width, // canvasの横幅
-    //             height: height, // canvasの高さ
-    //             background: "rgba(255, 255, 255, 0)"
-    //         }
-    //     }
-    // });
-    
-    var bodies = [];
-    var boxRender = { fillStyle: 'rgba(0, 0, 0, 0)', strokeStyle: 'rgba(0, 0, 0, 0)', lineWidth: 0 }
-    
+    // create a renderer
+    let render = Render.create({
+        element: document.getElementById('container'),
+        options: {
+          width: width,
+          height: height,
+          background: 'transparent',
+          pixelRatio: 2, // Pixel比 スマホ用に2にする
+          wireframes: false
+        },
+        engine: engine
+    });
+
     <% if @images.present? %>
-      <% @images.each do |image| %>
-      
-          // 塵の生成
-          var x = width / 2 + Math.random() * 100;
-          var y = -Math.random()*100;
-          var scale = 1//Math.random() + 1
-          
-          bodies.push(
-            Bodies.trapezoid(x, y, 70*scale, 70*scale, 0.2, 
-              {
-                density: 1, //密度
-                frictionAir: 0.005, //空気抵抗
-                restitution: 0.8, //反発係数
-                friction: 0.8, //摩擦
-                render: {
-                  sprite: {
-                    texture: '<%= Refile.attachment_url(image, :image) %>',
-                    xScale: 0.13*scale,
-                    yScale: 0.13*scale,
-                  }
-                }
-              })
-            )
-            
+      <% @images.each do |image| %> //画像url全件取得
+        textures.push('<%= Refile.attachment_url(image, :image) %>')
       <% end %>
     <% end %>
-    
-    // 床生成
-    floor = Bodies.rectangle(320, 480, 640, 1, {
-        isStatic: true // 固定
-    });
-    
-    bodies.push()
     
     // 床追加
     bodies.push(Bodies.rectangle(width / 2, height, width, 10, {render: boxRender, isStatic: true}));
     bodies.push(Bodies.rectangle(width, height / 2, 10, height, {render: boxRender, isStatic: true}));
     bodies.push(Bodies.rectangle(0, height / 2, 10, height, {render: boxRender, isStatic: true}));
-    
-    // add all of the bodies to the world
-    World.add(engine.world, bodies);
+
+    // add all of the bodies to the Composite
+    Composite.add(engine.world, bodies);
   
-    // run the engine
     Engine.run(engine);
-  
-    // run the renderer
     Render.run(render);
+
+    for (let i=0; i<textures.length; i++) {
+      let chiri = createChiri(width, textures[i], Bodies)
+      // add all of the bodies to the Composite
+      setTimeout(() => {Composite.add(engine.world, chiri)}, 1000*i);
+    }
   }
   
 </script>
