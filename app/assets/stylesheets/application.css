@@ -19,7 +19,7 @@
   /*開発環境では以下*/
   /* src: url('ファイル名') format("truetype");*/
   /*本番環境ではasset_urlを使用*/
-  src: asset_url('fonts/futura_medium_oblique.ttf') format('truetype');
+  src: url('futura_medium_oblique.ttf') format('truetype');
 }
 
 .futura {
