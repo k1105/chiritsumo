@@ -1,3 +1,33 @@
+/* line 5, /home/kanata/chiritsumo/chiritsumo/app/assets/stylesheets/static_pages.scss */
+body {
+  background-color: #BC004D;
+  color: white;
+  font-family: 'Yu Gothic';
+}
+
+/* line 11, /home/kanata/chiritsumo/chiritsumo/app/assets/stylesheets/static_pages.scss */
+.date {
+  font-family: "futura-medium-oblique";
+  font-size: 70px;
+}
+
+/* line 16, /home/kanata/chiritsumo/chiritsumo/app/assets/stylesheets/static_pages.scss */
+.date-number {
+  letter-spacing: -0.1em;
+}
+
+/* line 20, /home/kanata/chiritsumo/chiritsumo/app/assets/stylesheets/static_pages.scss */
+.information {
+  position: absolute;
+  left: -30px;
+  top: 90vh;
+  font-family: "futura-medium-oblique";
+}
+
+/* line 27, /home/kanata/chiritsumo/chiritsumo/app/assets/stylesheets/static_pages.scss */
+.change-log {
+  font-size: 12px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,9 +40,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
+
  */
+
 
 @font-face{
   font-family: "futura-medium-oblique";
