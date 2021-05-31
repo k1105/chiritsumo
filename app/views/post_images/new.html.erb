@@ -6,3 +6,7 @@
   <%= form.attachment_field :image %>
   <%= form.submit "投稿", class: "" %>
 <% end %>
+
+<%@images.each do |i| %>
+  <p>ID: <%= i.id %> created_at: <%= i.created_at %> <%= link_to '削除', "/post_images/#{i.id}", method: :delete %></p>
+<% end %>
