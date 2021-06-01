@@ -1,3 +1,3 @@
 class PostImage < ApplicationRecord
-  attachment :image
+  mount_uploader :image, PostImageUploader
 end

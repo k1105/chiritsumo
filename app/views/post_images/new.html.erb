@@ -3,8 +3,9 @@
 <br>みつかっちゃったときに対応しようと思っていたので、みつけたあなたは山岸のtwitterにご一報ください。</b></span></p>
 
 <%= form_for @image do |form| %>
-  <%= form.attachment_field :image %>
-  <%= form.submit "投稿", class: "" %>
+  <%= render 'layouts/error_messages', model: @image %>
+  <%= form.file_field :image %>
+  <%= form.submit "投稿" %>
 <% end %>
 
 <%@images.each do |i| %>

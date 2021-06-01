@@ -3,9 +3,10 @@
 
 <script>
   window.onload = function() {
+
     const width =  window.innerWidth*0.9;
     const height =  window.innerHeight*0.7;
-    let textures = []    
+    let textures = []
     let { Engine , Render, Composite, Bodies } = Matter;
     let bodies = [];
     let boxRender = { fillStyle: 'rgba(0, 0, 0, 0)', strokeStyle: 'rgba(0, 0, 0, 0)', lineWidth: 0 }
@@ -28,8 +29,9 @@
 
     <% if @images.present? %>
       <% @images.each do |image| %> //画像url全件取得
-        textures.push('<%= Refile.attachment_url(image, :image) %>')
+        textures.push('<%= image.image.url %>')
       <% end %>
+      console.log(textures)
     <% end %>
     
     // 床追加
