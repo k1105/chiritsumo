@@ -5,10 +5,11 @@ class PostImagesController < ApplicationController
   end
   
   def create
-    image = PostImage.new(image_params)
-    if image.save
+    @image = PostImage.new(image_params)
+    if @image.save
       redirect_to root_path
     else
+      @images = PostImage.all
       render 'new'
     end
   end

@@ -3,9 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  background-color: #BC004D;
+  background-image: url('noise_texture.png');
   color: white;
   font-family: 'Yu Gothic';
+}
+
+body::after {
+
 }
 
 .date {
