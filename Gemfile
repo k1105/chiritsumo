@@ -12,6 +12,7 @@ gem 'dotenv-rails'
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'
