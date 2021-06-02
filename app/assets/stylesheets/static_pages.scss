@@ -8,13 +8,10 @@ body {
   font-family: 'Yu Gothic';
 }
 
-body::after {
-
-}
-
 .date {
   font-family: "futura-medium-oblique";
   font-size: 70px;
+  position: absolute;
 }
 
 .date-number {
@@ -22,12 +19,17 @@ body::after {
 }
 
 .information {
-  position: absolute;
+  position: fixed;
   left: -30px;
   top: 90vh;
   font-family: "futura-medium-oblique";
 }
 
+.introduction {
+  margin-bottom: 90px;
+}
+
 .change-log {
   font-size: 12px;
+  margin-bottom: 120px;
 }

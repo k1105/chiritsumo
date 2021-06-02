@@ -2,10 +2,10 @@
 <div id='container'></div>
 
 <script>
-  window.onload = function() {
+  function init() {
 
-    const width =  window.innerWidth*0.9;
-    const height =  window.innerHeight*0.7;
+    const width =  window.innerWidth*0.95;
+    const height =  window.innerHeight*0.90;
     let textures = []
     let { Engine , Render, Composite, Bodies } = Matter;
     let bodies = [];
@@ -31,9 +31,8 @@
       <% @images.each do |image| %> //画像url全件取得
         textures.push('<%= image.image.url %>')
       <% end %>
-      console.log(textures)
     <% end %>
-    
+
     // 床追加
     bodies.push(Bodies.rectangle(width / 2, height, width, 10, {render: boxRender, isStatic: true}));
     bodies.push(Bodies.rectangle(width, height / 2, 10, height, {render: boxRender, isStatic: true}));
@@ -51,5 +50,7 @@
       setTimeout(() => {Composite.add(engine.world, chiri)}, 1000*i);
     }
   }
+
+  init();
   
 </script>
