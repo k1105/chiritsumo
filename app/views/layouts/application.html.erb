@@ -7,13 +7,16 @@
     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script>window.onunload = function() {};</script>
   </head>
 
   <body>
     <nav class="information">
       <ul>
-        <li><%=link_to "nanikore",about_path %></li>
+        <%if request.path == about_path %>
+          <li><%= link_to "BACK" , root_path %></li>
+        <% else %>
+          <li><%=link_to "nanikore",about_path %></li>
+        <% end %>
         <li><%= link_to "twitter", "https://twitter.com/ymgsknt" %></li>
         <li><%= link_to "instagram", "https://www.instagram.com/ymgsknt/" %></li>
       </ul>
