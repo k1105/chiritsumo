@@ -6,9 +6,12 @@ class PostImagesController < ApplicationController
   
   def create
     @image = PostImage.new(image_params)
-    @image.save
-    @images = PostImage.all
-    render 'new'
+    if @image.save
+      redirect_to new_post_image_path
+    else
+      @images = PostImage.all
+      render 'new'
+    end
   end
 
   def destroy
