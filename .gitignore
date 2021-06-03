@@ -23,4 +23,8 @@
 
 .byebug_history
 
+
+#carrierwave
+ /public/uploads/
+
 /.env
