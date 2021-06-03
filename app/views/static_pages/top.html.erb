@@ -46,6 +46,7 @@
 
     for (let i=0; i<textures.length; i++) {
       let chiri = createChiri(width, textures[i], Bodies)
+      Matter.Body.setAngle(chiri, Math.random()*6);
       // add all of the bodies to the Composite
       setTimeout(() => {Composite.add(engine.world, chiri)}, 1000*i);
     }
