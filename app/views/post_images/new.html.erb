@@ -2,12 +2,14 @@
 <p><b><span class="text-inversion-style">ここは山岸専用ページです。こういうページは普通山岸以外見えないようにするものなのですが、怠惰ゆえにロックをかけていませんでした。
 <br>みつかっちゃったときに対応しようと思っていたので、みつけたあなたは山岸のtwitterにご一報ください。</b></span></p>
 
+<%= link_to "TOP", root_path %>
+
 <%= form_for @image do |form| %>
   <%= render 'layouts/error_messages', model: @image %>
   <%= form.file_field :image %>
   <%= form.submit "投稿" %>
 <% end %>
 
-<%@images.each do |i| %>
+<%@images.reverse_each do |i| %>
   <p>ID: <%= i.id %> <%= image_tag i.image.url %> <%= link_to '削除', "/post_images/#{i.id}", method: :delete %></p>
 <% end %>
