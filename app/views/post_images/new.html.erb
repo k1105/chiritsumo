@@ -9,5 +9,5 @@
 <% end %>
 
 <%@images.each do |i| %>
-  <p>ID: <%= i.id %> created_at: <%= i.created_at %> <%= link_to '削除', "/post_images/#{i.id}", method: :delete %></p>
+  <p>ID: <%= i.id %> <%= image_tag i.image.url %> <%= link_to '削除', "/post_images/#{i.id}", method: :delete %></p>
 <% end %>
