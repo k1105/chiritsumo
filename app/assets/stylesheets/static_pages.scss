@@ -21,7 +21,8 @@ body {
 .information {
   position: fixed;
   left: -30px;
-  top: 90vh;
+  top: 90vh; /* Fallback for browsers that do not support Custom Properties */
+  top: calc(var(--vh, 1vh) * 90);
   font-family: "futura-medium-oblique";
 }
 
