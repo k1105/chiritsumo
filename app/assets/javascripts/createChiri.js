@@ -1,5 +1,5 @@
 function createChiri(width, texture, Bodies) {
-    const x = width * ( 0.1 * rnorm() + 0.5);
+    const x = width * ( 0.2 * rnorm() + 0.5);
     const y = -Math.random()*100;
     const scale = 0.8
     // 塵の生成
